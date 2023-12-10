@@ -47,6 +47,11 @@ int main(void){
         }
     }
 
+    DtwResource_catch(database){
+        interface.warning(&interface,"internal error\n");
+        interface.warning(&interface,"%s\n",resource.get_error_message(database));
+    }
+
 
 
 
