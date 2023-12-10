@@ -36,7 +36,9 @@ int main(void){
     if(action == FIND){
         find_user(database,&interface);
     }
-
+    if(action == DELETE){
+       modified = delete_user(database,&interface);
+    }
      
     if(modified){
         bool commit  = interface.ask_option(&interface,"commit?","no | yes");

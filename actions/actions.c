@@ -68,3 +68,20 @@ void find_user(Database *database,CliInterface *interface){
     free(username);
 
 }
+
+bool delete_user(Database *database,CliInterface *interface){
+    char *username = interface->ask_string(interface,"username",true);
+    UserOrError user_or_error = User_find(database,username);
+    bool modified = false;
+    if(user_or_error.error == NO_ERROR){
+       User_delete(user_or_error.user);
+       interface->print(interface,"User %s deleted\n",username); 
+        modified= true;
+    }
+
+    if(user_or_error.error == USER_NOT_FOUND){
+        interface->warning(interface,"User %s not found\n",username);
+    }
+    free(username);
+    return modified;
+}
