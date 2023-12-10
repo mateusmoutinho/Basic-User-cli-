@@ -31,3 +31,5 @@ char *User_get_username(User *user);
 
 
 UserOrError User_find(Database *database,const  char *username);
+
+void User_delete(User *user);

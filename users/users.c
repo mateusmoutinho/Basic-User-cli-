@@ -60,3 +60,6 @@ UserOrError User_find(Database *database,const  char *username){
     return (UserOrError){.user = user};
 }
 
+void User_delete(User *user){
+    resource.destroy(user);
+}
