@@ -6,7 +6,7 @@ just compile and run main.c to see the actions
 
 # Dependencies 
 
-## Cli-input for asking 
+## Cli-input for ask informations
 https://github.com/WacoderForever/clinput
 
 ## DoTheWorld  for Storage 
