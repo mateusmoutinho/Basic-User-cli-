@@ -45,3 +45,26 @@ void list_all_users(Database *database,CliInterface *interface){
 
 
 }
+
+void find_user(Database *database,CliInterface *interface){
+    char *username = interface->ask_string(interface,"username",true);
+    UserOrError user_or_error = User_find(database,username);
+    if(user_or_error.error == NO_ERROR){
+        User *user = user_or_error.user;
+        char *username = User_get_username(user);
+        char *email = User_get_email(user);
+        char *password = User_get_password(user);
+        DtwResource_protected(database){
+            interface->print(interface,"------------------------------------\n");
+            interface->print(interface,"%susername: %s%s\n",CLI_GREEN,CLI_BLUE, username);
+            interface->print(interface,"%semail: %s%s\n",CLI_GREEN,CLI_BLUE, email);
+            interface->print(interface,"%spassword: %s%s\n",CLI_GREEN,CLI_BLUE,password);
+
+        }
+    }
+    if(user_or_error.error == USER_NOT_FOUND){
+        interface->print(interface,"User %s not found\n",username);
+    }
+    free(username);
+    
+}

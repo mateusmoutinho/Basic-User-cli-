@@ -34,6 +34,10 @@ int main(void){
         list_all_users(database,&interface);
     }
 
+    if(action == FIND){
+        find_user(database,&interface);
+    }
+
      
     if(modified){
         bool commit  = interface.ask_option(&interface,"commit?","no | yes");
