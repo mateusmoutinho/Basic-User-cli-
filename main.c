@@ -24,7 +24,7 @@ int main(void){
     const int FIND =2;
     const int DELETE =3;
 
-    printf("action: %d\n",action);
+    bool modified = false;
     if(action == CREATE){
        modified= create_user(database,&interface);
     }

@@ -15,7 +15,7 @@ int  create_user(Database *database,CliInterface *interface){
     }
 
     if(user_created_or_error.error == USER_ALREADY_EXISTS){
-        interface->print(interface,"User %s already exists\n",username);
+        interface->warning(interface,"User %s already exists\n",username);
     }
     free(username);
     free(password);
@@ -63,8 +63,8 @@ void find_user(Database *database,CliInterface *interface){
         }
     }
     if(user_or_error.error == USER_NOT_FOUND){
-        interface->print(interface,"User %s not found\n",username);
+        interface->warning(interface,"User %s not found\n",username);
     }
     free(username);
-    
+
 }
